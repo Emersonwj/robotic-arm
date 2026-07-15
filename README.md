@@ -4,54 +4,76 @@
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![LeRobot](https://img.shields.io/badge/LeRobot-Hugging%20Face-blue)
 
-A 6-DOF robotic arm built from the open-source SO-101 platform by Hugging Face. The project covers full mechanical assembly from 3D-printed components, motor configuration, Python-based teleoperation, and imitation learning using the LeRobot framework.
+A leader-follower robotic manipulation platform built using the open-source SO-101 architecture and Hugging Face LeRobot framework. The project covers mechanical assembly, serial bus servo configuration, arm calibration, real-time teleoperation, and learning-based robotic manipulation.
 
 ## Overview
 
-This is a personal engineering project built alongside a systems engineering internship at Saab. The goal is to develop hands-on experience with the full robotics stack — from mechanical design and hardware integration to Python control and machine learning-based task execution.
+This is a personal robotics project focused on developing hands-on experience across the robotics stack — from mechanical assembly and hardware integration to robot control, computer vision, data collection, and imitation learning.
+
+The system consists of a manually controlled leader arm and a six-axis follower arm. Leader joint positions are communicated to the follower through LeRobot for real-time teleoperation. Future development will use teleoperated demonstrations to train autonomous manipulation policies.
 
 ## Hardware
 
-- 6x Feetech STS3215 serial bus servo motors
-- 3D-printed structural components (PLA) — printed at Syracuse University
-- Waveshare controller board
-- Leader and follower arm configuration for teleoperation
+- SO-101 leader and follower robotic arms
+- Feetech STS3215 serial bus servo motors
+- 3D-printed PLA structural components
+- Serial bus servo controller boards
+- 5V leader and 12V follower power systems
+- USB serial communication
 
 ## Software Stack
 
-- Python 3.x
-- Hugging Face LeRobot framework
-- Feetech SDK for motor communication
+- Python 3.10
+- Hugging Face LeRobot
+- PyTorch
+- Miniforge / Conda
+- Ubuntu 22.04 via WSL2
 
 ## Project Phases
 
 ### Phase 1 — Mechanical Assembly
-- 3D print all structural components from SO-ARM100 STL files
-- Assemble 6 joints per the SO-101 build guide
-- Source and install all hardware (motors, screws, cables)
+- [x] Source and 3D print structural components
+- [x] Assemble leader and follower manipulators
+- [x] Install motors, servo horns, cabling, and controller hardware
 
-### Phase 2 — Motor Configuration
-- Configure unique motor IDs and baudrates via Feetech SDK
-- Calibrate leader and follower arms through full range of motion
+### Phase 2 — Motor Configuration and Calibration
+- [x] Assign unique IDs to 12 Feetech serial bus servos
+- [x] Configure motor communication parameters
+- [x] Calibrate six joints on the leader and follower arms through their full ranges of motion
 
-### Phase 3 — Python Control
-- Install LeRobot and establish USB communication with controller board
-- Implement teleoperation between leader and follower arms
-- Write custom Python scripts for programmatic joint control
+### Phase 3 — Teleoperation
+- [x] Configure LeRobot development environment
+- [x] Establish USB serial communication through Ubuntu and WSL2
+- [x] Implement real-time leader-follower teleoperation
+- [ ] Develop custom Python scripts for programmatic joint control
 
-### Phase 4 — Imitation Learning (stretch goal)
-- Record demonstration datasets using teleoperation
-- Train a neural network policy using LeRobot's ACT framework
-- Evaluate autonomous task execution on the follower arm
+### Phase 4 — Vision and Data Collection
+- [ ] Integrate cameras into the manipulation workspace
+- [ ] Configure OpenCV camera streams
+- [ ] Record teleoperated manipulation demonstrations
+- [ ] Build and visualize LeRobot datasets
+
+### Phase 5 — Imitation Learning
+- [ ] Train an ACT policy using recorded demonstrations
+- [ ] Evaluate autonomous task execution
+- [ ] Analyze task success rate and failure modes
+- [ ] Improve policy performance through dataset iteration
+
+## Current Status
+
+Leader and follower arms have been assembled, configured, and calibrated. Real-time teleoperation is functional, with the follower arm replicating joint motion from the leader arm.
+
+The next development milestone is camera integration and collection of the first teleoperated manipulation dataset.
 
 ## Build Log
 
-Updates added as the project progresses.
-
-- **May 2026** — Repository initialized. Parts printing at Syracuse University.
+- **June 2026** — Repository initialized and structural components printed at Syracuse University.
+- **July 2026** — Configured motor IDs and communication parameters for 12 serial bus servos.
+- **July 2026** — Completed mechanical assembly and full-range calibration of leader and follower arms.
+- **July 2026** — Established real-time leader-follower teleoperation using LeRobot.
 
 ## References
 
 - [SO-101 Documentation](https://huggingface.co/docs/lerobot/en/so101)
-- [SO-ARM100 Hardware Repo](https://github.com/TheRobotStudio/SO-ARM100)
+- [SO-ARM100 Hardware Repository](https://github.com/TheRobotStudio/SO-ARM100)
 - [LeRobot Framework](https://github.com/huggingface/lerobot)
