@@ -4,6 +4,10 @@
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![LeRobot](https://img.shields.io/badge/LeRobot-Hugging%20Face-blue)
 
+## Demo
+
+![SO-101 Leader-Follower Teleoperation](so101_teleoperation_demo.gif)
+
 A leader-follower robotic manipulation platform built using the open-source SO-101 architecture and Hugging Face LeRobot framework. The project covers mechanical assembly, serial bus servo configuration, arm calibration, real-time teleoperation, and learning-based robotic manipulation.
 
 ## Overview
