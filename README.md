@@ -6,7 +6,7 @@
 
 ## Demo
 
-![SO-101 Leader-Follower Teleoperation](so101_teleoperation_demo.gif)
+![SO-101 Leader-Follower Teleoperation](images/so101_teleoperation_demo.gif)
 
 A leader-follower robotic manipulation platform built using the open-source SO-101 architecture and Hugging Face LeRobot framework. The project covers mechanical assembly, serial bus servo configuration, arm calibration, real-time teleoperation, and learning-based robotic manipulation.
 
@@ -89,7 +89,7 @@ The proportional controller reduced RMS tracking error by approximately **65%** 
 
 ## Tracking Performance
 
-![Trajectory Tracking](tracking_plot.png)
+![Trajectory Tracking](images/tracking_plot.png)
 
 ## Current Status
 
