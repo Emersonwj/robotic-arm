@@ -49,19 +49,43 @@ The system consists of a manually controlled leader arm and a six-axis follower 
 - [x] Configure LeRobot development environment
 - [x] Establish USB serial communication through Ubuntu and WSL2
 - [x] Implement real-time leader-follower teleoperation
-- [ ] Develop custom Python scripts for programmatic joint control
+- [x] Develop custom Python scripts for programmatic joint control
 
-### Phase 4 — Vision and Data Collection
+### Phase 4 — Control Systems
+
+- [x] Designed and implemented a custom outer-loop proportional controller for trajectory tracking
+- [x] Generated sinusoidal reference trajectories for the base joint
+- [x] Logged desired vs. measured joint positions
+- [x] Evaluated tracking performance using RMS, mean, and maximum error
+- [x] Performed proportional gain tuning (Kp sweep)
+- [x] Identified stability limit through experimental testing
+
+### Phase 5 — Vision and Data Collection
 - [ ] Integrate cameras into the manipulation workspace
 - [ ] Configure OpenCV camera streams
 - [ ] Record teleoperated manipulation demonstrations
 - [ ] Build and visualize LeRobot datasets
 
-### Phase 5 — Imitation Learning
+### Phase 6 — Imitation Learning
 - [ ] Train an ACT policy using recorded demonstrations
 - [ ] Evaluate autonomous task execution
 - [ ] Analyze task success rate and failure modes
 - [ ] Improve policy performance through dataset iteration
+
+## Experimental Results
+
+### Base Joint Trajectory Tracking
+
+A custom proportional feedback controller was implemented around the SO-101's internal servo controller to improve trajectory tracking.
+
+The controller was evaluated by commanding a sinusoidal reference trajectory while logging desired and measured joint positions.
+
+| Controller | RMS Error |
+|------------|-----------|
+| Baseline | 0.599° |
+| P Controller (Kp = 2.0) | 0.212° |
+
+The proportional controller reduced RMS tracking error by approximately **65%** before oscillatory behavior appeared at higher gains (Kp ≥ 2.25).
 
 ## Current Status
 
@@ -72,9 +96,11 @@ The next development milestone is camera integration and collection of the first
 ## Build Log
 
 - **June 2026** — Repository initialized and structural components printed at Syracuse University.
-- **July 2026** — Configured motor IDs and communication parameters for 12 serial bus servos.
-- **July 2026** — Completed mechanical assembly and full-range calibration of leader and follower arms.
-- **July 2026** — Established real-time leader-follower teleoperation using LeRobot.
+- **July 2026** — Completed mechanical assembly and calibration of leader and follower SO-101 robotic arms.
+- Implemented teleoperation using the Hugging Face LeRobot framework.
+- Developed custom Python scripts for sinusoidal trajectory generation and trajectory tracking.
+- Designed an outer-loop proportional controller and reduced RMS tracking error by approximately 65%.
+- Characterized controller stability through proportional gain tuning experiments.
 
 ## References
 
