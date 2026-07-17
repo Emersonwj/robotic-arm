@@ -87,6 +87,10 @@ The controller was evaluated by commanding a sinusoidal reference trajectory whi
 
 The proportional controller reduced RMS tracking error by approximately **65%** before oscillatory behavior appeared at higher gains (Kp ≥ 2.25).
 
+## Tracking Performance
+
+![Trajectory Tracking](tracking_plot.png)
+
 ## Current Status
 
 Leader and follower arms have been assembled, configured, and calibrated. Real-time teleoperation is functional, with the follower arm replicating joint motion from the leader arm.
