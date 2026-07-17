@@ -10,6 +10,16 @@
 
 A leader-follower robotic manipulation platform built using the open-source SO-101 architecture and Hugging Face LeRobot framework. The project covers mechanical assembly, serial bus servo configuration, arm calibration, real-time teleoperation, and learning-based robotic manipulation.
 
+## Features
+
+- Real-time leader-follower teleoperation
+- Custom trajectory generation
+- Outer-loop proportional control
+- Automated proportional gain tuning
+- Quantitative trajectory tracking analysis
+- Planned computer vision integration
+- Planned ACT imitation learning
+
 ## Overview
 
 This is a personal robotics project focused on developing hands-on experience across the robotics stack — from mechanical assembly and hardware integration to robot control, computer vision, data collection, and imitation learning.
@@ -76,20 +86,30 @@ The system consists of a manually controlled leader arm and a six-axis follower 
 
 ### Base Joint Trajectory Tracking
 
-A custom proportional feedback controller was implemented around the SO-101's internal servo controller to improve trajectory tracking.
+A custom outer-loop proportional position controller was implemented around the servo's internal position controller to improve trajectory tracking.
+
+Controller performance was evaluated using sinusoidal reference trajectories while recording desired and measured joint positions for quantitative analysis.
 
 The controller was evaluated by commanding a sinusoidal reference trajectory while logging desired and measured joint positions.
 
-| Controller | RMS Error |
-|------------|-----------|
-| Baseline | 0.599° |
-| P Controller (Kp = 2.0) | 0.212° |
+| Controller | RMS Error | Mean Error | Max Error |
+|------------|----------:|-----------:|----------:|
+| Baseline | 0.599° | 0.556° | 1.052° |
+| P Controller (Kp = 2.0) | 0.212° | 0.172° | 0.472° |
 
 The proportional controller reduced RMS tracking error by approximately **65%** before oscillatory behavior appeared at higher gains (Kp ≥ 2.25).
 
 ## Tracking Performance
 
 ![Trajectory Tracking](images/tracking_plot.png)
+
+## Proportional Gain Sweep
+
+The proportional gain was experimentally varied to characterize the tradeoff between tracking accuracy and controller stability.
+
+![Gain Sweep](images/kp_sweep_plot.png)
+
+Tracking accuracy improved as proportional gain increased until visible oscillation developed at **Kp = 2.25**. A gain of **Kp = 2.0** produced the lowest tracking error without visible instability.
 
 ## Current Status
 
@@ -105,6 +125,20 @@ The next development milestone is camera integration and collection of the first
 - Developed custom Python scripts for sinusoidal trajectory generation and trajectory tracking.
 - Designed an outer-loop proportional controller and reduced RMS tracking error by approximately 65%.
 - Characterized controller stability through proportional gain tuning experiments.
+
+## Repository Structure
+
+```text
+experiments/
+├── sine_tracking.py
+├── proportional_tracking.py
+├── kp_sweep.py
+├── plot_sine_tracking.py
+└── results/
+
+images/
+README.md
+```
 
 ## References
 
